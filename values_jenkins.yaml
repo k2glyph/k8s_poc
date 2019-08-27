@@ -1,0 +1,35 @@
+jenkinsUser: admin
+jenkinsPassword: U6OHGSSkRX
+jenkinsHome: /opt/bitnami/jenkins/jenkins_home
+service:
+  type: ClusterIP
+  port: 80
+  httpsPort: 443
+  nodePorts:
+    http: ""
+    https: ""
+  externalTrafficPolicy: Cluster
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 180
+  periodSeconds: 10
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 6
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 5
+  timeoutSeconds: 3
+  successThreshold: 1
+  failureThreshold: 3
+ingress:
+  enabled: true
+  certManager: true
+  annotations:
+   kubernetes.io/ingress.class: nginx
+  hosts:
+  - name: jenkins.34.93.94.159.xip.io
+    path: /
+    tls: true
+    tlsSecret: jenkins.local-tls
