@@ -11,7 +11,7 @@ Master:
   Memory: "3500Mi"
   JavaOpts: "-Xms3500m -Xmx3500m"
   ServiceType: ClusterIP
-  HostName: "xx.xx.xxxx.com"
+  HostName: "jenkins.34.93.94.159.xip.io"
   Ingress:
     Annotations:
       kubernetes.io/ingress.class: "nginx"
