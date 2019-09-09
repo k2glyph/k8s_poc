@@ -17,10 +17,17 @@ spec:
       containers:
       - args:
         - --ignore-db-dir=lost+found
+        image: perconalab/percona-xtradb-cluster:5.7
+        env:
+          - name: DISCOVERY_SERVICE
+            value: etcd:2379
+          - name: XTRABACKUP_PASSWORD
+            value: k8spassword
+          - name: CLUSTER_NAME
+            value: mysql
         envFrom:
-        - secretRef:
-            name: mysql-cred
-        image: mysql:5.7.12
+          - secretRef:
+              name: mysql-cred
         name: mysql
         ports:
         - containerPort: 3306

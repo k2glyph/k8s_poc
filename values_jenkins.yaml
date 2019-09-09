@@ -1,6 +1,6 @@
 jenkinsUser: admin
 jenkinsPassword: U6OHGSSkRX
-jenkinsHome: /opt/bitnami/jenkins/jenkins_home
+jenkinsHome: /var/jenkins_home
 service:
   type: ClusterIP
   port: 80
@@ -29,7 +29,9 @@ ingress:
   annotations:
    kubernetes.io/ingress.class: nginx
   hosts:
-  - name: jenkins.34.93.94.159.xip.io
+  - name: jenkins.cicd.auzmor.com
     path: /
     tls: true
     tlsSecret: jenkins.local-tls
+rbac:
+  create: true
